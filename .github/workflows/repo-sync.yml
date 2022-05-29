@@ -33,6 +33,7 @@ jobs:
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/js-combinatorics@0.5.5/combinatorics.min.js#https://cdnjs.loli.net/ajax/libs/js-combinatorics/0.5.5/combinatorics.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js#https://cdnjs.loli.net/ajax/libs/vue/2.6.13/vue.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.min.css#https://cdnjs.loli.net/ajax/libs/font-awesome/5.13.1/css/all.min.css#g' {} \;
+              find ./ -type f -exec sed -i -e 's#<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-161715700-1"></script>##g' {} \;
               git add ./*
               git commit -m "Patch frontend urls"
               git push
