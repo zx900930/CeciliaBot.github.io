@@ -24,17 +24,16 @@ jobs:
           source_branch: master
           destination_branch: master
           github_token: ${{ secrets.PAT }}
-    - name: "Checkout branch chinese"
+    - name: "Checkout branch chinesepod"
       uses: actions/checkout@v3
       with:
-          ref: chinese
-          persist-credentials: false
-    - name: "Repo-sync branch chinese"
+          ref: chinesepod
+    - name: "Repo-sync branch chinesepod"
       uses: repo-sync/github-sync@v2
       with:
           source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
           source_branch: master
-          destination_branch: chinese
+          destination_branch: chinesepod
           github_token: ${{ secrets.PAT }}
     - name: "Patch-frontend branch chinese"
       run: |
