@@ -29,13 +29,15 @@ jobs:
               git config --global user.email ${{ secrets.EMAIL }}
               git config --global user.name ${{ secrets.USERNAME }}
               git config --global user.password ${{ secrets.PAT }}
+              wget https://cdn.glitch.com/5c21c869-ea9a-48ba-b019-90cd493f45cd%2Fcamp-fire-icon%20small.png\?v\=1585067234171 -O ./img/camp-fire.png
+              wget https://cdn.glitch.com/5c21c869-ea9a-48ba-b019-90cd493f45cd%2Fangienobg.gif?v=1585008523656 -O ./img/calcul.gif
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js#https://cdnjs.loli.net/ajax/libs/jquery/3.5.1/jquery.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/js-combinatorics@0.5.5/combinatorics.min.js#https://cdnjs.loli.net/ajax/libs/js-combinatorics/0.5.5/combinatorics.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js#https://cdnjs.loli.net/ajax/libs/vue/2.6.13/vue.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.min.css#https://cdnjs.loli.net/ajax/libs/font-awesome/5.13.1/css/all.min.css#g' {} \;
               find ./ -type f -exec sed -i -e 's#<script defer src="https://www.googletagmanager.com/gtag/js?id=UA-161715700-1"></script>##g' {} \;
-              find ./ -type f -exec sed -i -e 's#('calculate_window');" style="font-size:36px;"#('calculate_window');"#g' {} \;
-              find ./ -type f -exec sed -i -e 's#<img src="https://cdn.glitch.com/5c21c869-ea9a-48ba-b019-90cd493f45cd%2Fcamp-fire-icon%20small.png?v=1585067234171" alt="calculate" style="margin-bottom: -10px; height: 40px;" />#<i class="fas fa-fire" aria-hidden="true"></i>#g' {} \;
+              find ./ -type f -exec sed -i -e 's#<img src="https://cdn.glitch.com/5c21c869-ea9a-48ba-b019-90cd493f45cd%2Fcamp-fire-icon%20small.png?v=1585067234171" alt="calculate" style="margin-bottom: -10px; height: 40px;" />#<img src="./img/camp-fire.png" alt="calculate" style="margin-bottom: -10px; height: 40px;" />#g' {} \;
+              find ./ -type f -exec sed -i -e 's#<img src="https://cdn.glitch.com/5c21c869-ea9a-48ba-b019-90cd493f45cd%2Fangienobg.gif?v=1585008523656" style="height:100px"/>#<img src="./img/calcul.gif" style="height:100px"/>#g' {} \;
               git add ./*
               git commit -m "Patch frontend urls"
               git push
