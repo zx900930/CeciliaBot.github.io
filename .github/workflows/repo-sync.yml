@@ -37,6 +37,8 @@ jobs:
           github_token: ${{ secrets.PAT }}
     - name: "Patch-frontend branch chinese"
       run: |
+              git config --global user.email ${{ secrets.EMAIL }}
+              git config --global user.name ${{ secrets.PAT }}
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js#https://cdnjs.loli.net/ajax/libs/jquery/3.5.1/jquery.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/js-combinatorics@0.5.5/combinatorics.min.js#https://cdnjs.loli.net/ajax/libs/js-combinatorics/0.5.5/combinatorics.min.js#g' {} \; 
               find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js#https://cdnjs.loli.net/ajax/libs/vue/2.6.13/vue.min.js#g' {} \; 
