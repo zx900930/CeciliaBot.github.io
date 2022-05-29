@@ -1,6 +1,9 @@
 # File: .github/workflows/repo-sync.yml
 
 on:
+  push:
+    branches:
+      - chinese
   schedule:
   - cron:  '30 5,18 * * *'
   workflow_dispatch:
