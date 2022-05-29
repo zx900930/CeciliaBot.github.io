@@ -12,18 +12,6 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-    - name: "Checkout branch master"
-      uses: actions/checkout@v3
-      with:
-          ref: master
-          persist-credentials: false
-    - name: "Repo-sync branch master"
-      uses: repo-sync/github-sync@v2
-      with:
-          source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
-          source_branch: master
-          destination_branch: master
-          github_token: ${{ secrets.PAT }}
     - name: "Checkout branch chinesepod"
       uses: actions/checkout@v3
       with:
