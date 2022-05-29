@@ -1,10 +1,6 @@
 # CeciliaBot.github.io E7 Camping Simulator
 
-Gamedata has been moved inside the data folder
+This branch is making for a usable site inside china
 
-# Missing Character Data
-- Verdant Adin (Same as Adin)
-
-# Todo:
-
-1. Rewrite everything with Webpack (WIP)
+# Things changed compare to the master brach
+- Frontend urls are switched to chines frontend cdn urls
