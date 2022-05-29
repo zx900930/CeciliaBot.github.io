@@ -1,6 +1,9 @@
 # File: .github/workflows/repo-sync.yml
 
 on:
+  push:
+    branches:
+      - 'chinese'
   schedule:
   - cron:  "*/15 * * * *"
   workflow_dispatch:
@@ -10,28 +13,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: "Checkout branch master"
-      uses: "actions/checkout@v3"
+      uses: actions/checkout@v3
       with:
           ref: master
-          persist-credentials: "false"
+          persist-credentials: false
     - name: "Repo-sync branch master"
-      uses: "repo-sync/github-sync@v2"
+      uses: repo-sync/github-sync@v2
       with:
           source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
-          source_branch: "master"
-          destination_branch: "master"
+          source_branch: master
+          destination_branch: master
           github_token: ${{ secrets.PAT }}
     - name: "Checkout branch chinese"
-      uses: "actions/checkout@v3"
+      uses: actions/checkout@v3
       with:
-          ref: "chinese"
-          persist-credentials: "false"
+          ref: chinese
+          persist-credentials: false
     - name: "Repo-sync branch chinese"
-      uses: "repo-sync/github-sync@v2"
+      uses: repo-sync/github-sync@v2
       with:
           source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
-          source_branch: "master"
-          destination_branch: "chinese"
+          source_branch: master
+          destination_branch: chinese
           github_token: ${{ secrets.PAT }}
     - name: "Patch-frontend branch chinese"
       run: |
