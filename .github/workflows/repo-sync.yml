@@ -9,39 +9,39 @@ jobs:
   repo-sync:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout branch master
-       uses: actions/checkout@v3
-       with:
-         ref: master
-         persist-credentials: false
-    - name: Repo-sync branch master
-       uses: repo-sync/github-sync@v2
-       with:
-         source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
-         source_branch: "master"
-         destination_branch: "master"
-         github_token: ${{ secrets.PAT }}
-    - name: Checkout branch chinese
-       uses: actions/checkout@v3
-       with:
-         ref: chinese
-         persist-credentials: false
-    - name: Repo-sync branch chinese
-       uses: repo-sync/github-sync@v2
-       with:
-         source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
-         source_branch: "master"
-         destination_branch: "chinese"
-         github_token: ${{ secrets.PAT }}
-    - name: Patch-frontend branch chinese
-       run: |
-           find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js#https://cdnjs.loli.net/ajax/libs/jquery/3.5.1/jquery.min.js#g' {} \; 
-           find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/js-combinatorics@0.5.5/combinatorics.min.js#https://cdnjs.loli.net/ajax/libs/js-combinatorics/0.5.5/combinatorics.min.js#g' {} \; 
-           find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js#https://cdnjs.loli.net/ajax/libs/vue/2.6.13/vue.min.js#g' {} \; 
-           find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.min.css#https://cdnjs.loli.net/ajax/libs/font-awesome/5.13.1/css/all.min.css#g' {} \;
-           git add ./*
-           git commit -m "Patch frontend urls"
-           git push
+    - name: "Checkout branch master"
+      uses: "actions/checkout@v3"
+      with:
+          ref: master
+          persist-credentials: "false"
+    - name: "Repo-sync branch master"
+      uses: "repo-sync/github-sync@v2"
+      with:
+          source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
+          source_branch: "master"
+          destination_branch: "master"
+          github_token: ${{ secrets.PAT }}
+    - name: "Checkout branch chinese"
+      uses: "actions/checkout@v3"
+      with:
+          ref: "chinese"
+          persist-credentials: "false"
+    - name: "Repo-sync branch chinese"
+      uses: "repo-sync/github-sync@v2"
+      with:
+          source_repo: "https://github.com/CeciliaBot/CeciliaBot.github.io.git"
+          source_branch: "master"
+          destination_branch: "chinese"
+          github_token: ${{ secrets.PAT }}
+    - name: "Patch-frontend branch chinese"
+      run: |
+              find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js#https://cdnjs.loli.net/ajax/libs/jquery/3.5.1/jquery.min.js#g' {} \; 
+              find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/js-combinatorics@0.5.5/combinatorics.min.js#https://cdnjs.loli.net/ajax/libs/js-combinatorics/0.5.5/combinatorics.min.js#g' {} \; 
+              find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js#https://cdnjs.loli.net/ajax/libs/vue/2.6.13/vue.min.js#g' {} \; 
+              find ./ -type f -exec sed -i -e 's#https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.min.css#https://cdnjs.loli.net/ajax/libs/font-awesome/5.13.1/css/all.min.css#g' {} \;
+              git add ./*
+              git commit -m "Patch frontend urls"
+              git push
        
       
    
